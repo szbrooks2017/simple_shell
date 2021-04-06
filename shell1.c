@@ -52,17 +52,55 @@ char *split_cmd(char *lineptr)
 	return (lineptr);
 	
 }
+int check_cmd_avi(char *cmd)
+{
+	struct stat sb;
+
+	cmd = strtok(cmd, "\n");	
+	return (stat(cmd, &sb));
+}
+void make_fork(char *cmd)
+{
+	pid_t child_pid;
+	char *newenviron[] = { NULL };
+	int status = 0;
+	char *argv[2] = { NULL};
+
+	argv[0] = cmd;
+	child_pid = fork();
+	if (child_pid == -1)
+	{
+		perror("Error:");
+		return;
+	}
+	if (child_pid == 0)
+	{
+		/* exe */
+		if (execve(cmd, argv, newenviron) == -1)
+		{
+			perror("Error:");
+		}
+
+	}
+	else
+	{
+		wait(&status);
+	}
+	return;
+}
+
 int main(__attribute__((unused))int argc, __attribute__((unused))char **argv)
 {
-	char *lineptr = NULL, *cmd;
+	char *lineptr, *cmd;
 
-	while(1)
+	do
 	{
+		lineptr = NULL;
 		/* print prompt */
 		print_prompt();
 		/* read line */
-		read_cmd(&lineptr);
-		printf("%s\n", lineptr);
+			read_cmd(&lineptr);
+	/*	printf("%s\n", lineptr); */
 		if(!lineptr)
 		{
 			exit(EXIT_SUCCESS);
@@ -80,13 +118,23 @@ int main(__attribute__((unused))int argc, __attribute__((unused))char **argv)
 		}
 		/* split the cmd */
 		cmd = split_cmd(lineptr);
-		printf("%s\n", cmd);
-
-		
+		/* check the cmd availability */
+		if (check_cmd_avi(cmd) == -1)
+		{
+			write(1, "./shell: No such file or directory\n", 35);
+			continue;			
+		}
+		else
+		{
+			/* call execve() */
+			printf("We are creating folk\n");
+			make_fork(cmd);
+			continue;
+		}
 		free(lineptr);
 			lineptr = NULL;
 		fflush(stdin);
-	}
+	}while(1);
 
 	return (0);
 }

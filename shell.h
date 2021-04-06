@@ -18,4 +18,5 @@ extern char **environ;
 
 /* prototypes */
 int main(__attribute__((unused))int argc, char **argv);
+char **read_cmd(char **lineptr);
 #endif

@@ -64,7 +64,7 @@ int check_cmd_avi(char *cmd)
 */
 int main(__attribute__((unused))int argc, __attribute__((unused))char **argv)
 {
-	char *lineptr, *cmd;
+	char *lineptr, *cmd, *lineptr_dup;
 
 	do {
 		lineptr = NULL;
@@ -89,6 +89,7 @@ int main(__attribute__((unused))int argc, __attribute__((unused))char **argv)
 			break;
 		}
 		/* split the cmd */
+		lineptr_dup = strdup(lineptr);
 		cmd = split_cmd(lineptr);
 		/* check the cmd availability */
 		if (check_cmd_avi(cmd) == -1)
@@ -100,7 +101,7 @@ int main(__attribute__((unused))int argc, __attribute__((unused))char **argv)
 		{
 			/* call execve() */
 			printf("We are creating fork\n");
-			make_fork(cmd);
+			make_fork(lineptr_dup);
 			continue;
 		}
 		free(lineptr);

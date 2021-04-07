@@ -17,6 +17,12 @@
 extern char **environ;
 
 /* prototypes */
-int main(__attribute__((unused))int argc, char **argv);
+int main(__attribute__((unused))int argc, __attribute__((unused))char **argv);
+void print_prompt(void);
 char **read_cmd(char **lineptr);
+int check_space(char *lineptr);
+char *split_cmd(char *lineptr);
+int check_cmd_avi(char *cmd);
+void make_fork(char *cmd);
+int _strcmp(char *lineptr, char *str);
 #endif

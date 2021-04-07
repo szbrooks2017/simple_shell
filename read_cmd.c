@@ -1,5 +1,11 @@
 #include "shell.h"
 
+/**
+ * read_cmd - gathers input from the loop with EOF exit checks
+ * @lineptr: is the string
+ * Return: returns the command string back
+ */
+
 char **read_cmd(char **lineptr)
 {
 	ssize_t command;
@@ -11,7 +17,7 @@ char **read_cmd(char **lineptr)
 			free(lineptr);
 			exit(0);
 		}
-	return(lineptr);
+	return (lineptr);
 
 }
 

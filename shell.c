@@ -62,8 +62,7 @@ int check_cmd_avi(char *cmd)
 * @argv: is the amount of arguments
 * Return: returns 0 for success.
 */
-deal_with_PATH()
-{
+
 	/*get the PATH */
 	/*dup the lineptr-> lineptr_dup */
 	/*split the PATH into strings and save them into char **arg*/
@@ -72,7 +71,7 @@ deal_with_PATH()
 	/* return the full lineptr_dup with address */
 	
 
-}
+
 
 int main(__attribute__((unused))int argc, __attribute__((unused))char **argv)
 {
@@ -103,6 +102,7 @@ int main(__attribute__((unused))int argc, __attribute__((unused))char **argv)
 		/*deal with PATH 
 		deal_with_PATH();*/
 		/* split the cmd */
+	/*	builtin = get_builtin() */
 		lineptr_dup = _strdup(lineptr);
 		cmd = split_cmd(lineptr);
 		/* check the cmd availability */

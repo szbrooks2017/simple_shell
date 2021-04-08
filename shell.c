@@ -93,18 +93,11 @@ int main(__attribute__((unused))int argc, __attribute__((unused))char **argv)
 		cmd = split_cmd(lineptr);
 		/* check the cmd availability */
 		if (check_cmd_avi(cmd) == -1)
-		{
 			write(1, "./shell: No such file or directory\n", 35);
-			continue;
-		}
 		else
-		{
-			/* call execve() */
-			printf("We are creating fork\n");
 			make_fork(lineptr_dup);
-			continue;
-		}
-		free(lineptr);
+		free(lineptr_dup);
+                free(lineptr);
 			lineptr = NULL;
 		fflush(stdin);
 	} while (1);

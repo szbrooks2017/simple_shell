@@ -62,6 +62,18 @@ int check_cmd_avi(char *cmd)
 * @argv: is the amount of arguments
 * Return: returns 0 for success.
 */
+deal_with_PATH()
+{
+	/*get the PATH */
+	/*dup the lineptr-> lineptr_dup */
+	/*split the PATH into strings and save them into char **arg*/
+	/*swith dir to check if cmd exist, changedir() and stat()*/
+	/* strcat() the address with lineptr_dup if it exist */
+	/* return the full lineptr_dup with address */
+	
+
+}
+
 int main(__attribute__((unused))int argc, __attribute__((unused))char **argv)
 {
 	char *lineptr, *cmd, *lineptr_dup;
@@ -88,6 +100,8 @@ int main(__attribute__((unused))int argc, __attribute__((unused))char **argv)
 			free(lineptr);
 			break;
 		}
+		/*deal with PATH 
+		deal_with_PATH();*/
 		/* split the cmd */
 		lineptr_dup = _strdup(lineptr);
 		cmd = split_cmd(lineptr);

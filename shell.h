@@ -25,4 +25,6 @@ char *split_cmd(char *lineptr);
 int check_cmd_avi(char *cmd);
 void make_fork(char *cmd);
 int _strcmp(char *lineptr, char *str);
+int _strlen(char *s);
+char *_strdup(char *str);
 #endif

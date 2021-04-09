@@ -60,23 +60,49 @@ return the full lineptr_dup with address*/
         argv[0] = strtok(path, delim);
 	str_w_dir = _strcat_w_slash(argv[0], cmd);
 	if (stat(str_w_dir, &sb) == 0)
+	{	
+		
+		free(str_w_dir);
+		free(lineptr);
+        	free(path);
+        	free (argv);
                 return (_strcat_w_slash(argv[0], lineptr_dup));
+	}
+/*	free(str_w_dir);
+		str_w_dir = NULL; */
 	for(i = 1; i < (n + 1); i++)
 	{
 		argv[i] = strtok(NULL, delim);
         	str_w_dir = _strcat_w_slash(argv[i], cmd);
 		if (stat(str_w_dir, &sb) == 0)
-                	return (_strcat_w_slash(argv[i], lineptr_dup));
-	}
-/*	while (environ[i] != '\0')
-	{
-		if(strncmp(environ[i], _strlen('PATH')) == 0)
 		{
-		path = strdup(environ[i];
-			printf("full path %s\n", environ[i]);
+			free(cmd);
+                	free(str_w_dir);
+/*			c = i;
+			while(c > 0)
+			{
+				if (argv[c - 1])
+					free(argv[c - 1]);
+				c--;	
+			} */
+                	return (_strcat_w_slash(argv[i], lineptr_dup));
 		}
+/*		else 
+		{
+			free(str_w_dir);
+			str_w_dir = NULL;
+		}*/
 	}
-*/
+
+	free(cmd);
+        free(path);
+        free(str_w_dir);
+
+        while(i > 0)
+       	{
+               free(argv[i - 1]);
+               i--;
+        }
 	return (lineptr_dup);
 }
 		

@@ -27,4 +27,5 @@ void make_fork(char *cmd);
 int _strcmp(char *lineptr, char *str);
 int _strlen(char *s);
 char *_strdup(char *str);
+char *deal_with_path(char *lineptr);
 #endif

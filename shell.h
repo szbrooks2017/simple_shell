@@ -12,9 +12,19 @@
 #include <signal.h>
 #include <fcntl.h>
 #include <dirent.h>
+#include <stdarg.h>
+#include <errno.h>
 
 /*global var*/
 extern char **environ;
+
+/*builtin struct */
+typedef struct builtinType
+{
+        char *builtinName;
+        int (*function)();
+}builtinType;
+
 
 /* prototypes */
 int main(__attribute__((unused))int argc, __attribute__((unused))char **argv);
@@ -24,8 +34,13 @@ int check_space(char *lineptr);
 char *split_cmd(char *lineptr);
 int check_cmd_avi(char *cmd);
 void make_fork(char *cmd);
+char *deal_with_path(char *lineptr);
+int (*find_builtin(char *lineptr))();
+int builtExit(void);
+int builtEnv(void);
+/*string prototypes*/
 int _strcmp(char *lineptr, char *str);
 int _strlen(char *s);
 char *_strdup(char *str);
-char *deal_with_path(char *lineptr);
+
 #endif

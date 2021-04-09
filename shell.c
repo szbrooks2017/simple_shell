@@ -65,6 +65,7 @@ int check_cmd_avi(char *cmd)
 int main(__attribute__((unused))int argc, __attribute__((unused))char **argv)
 {
 	char *lineptr, *cmd, *lineptr_dup;
+	int (*builtin)() = NULL;
 
 	do {
 		lineptr = NULL;
@@ -88,7 +89,9 @@ int main(__attribute__((unused))int argc, __attribute__((unused))char **argv)
 			free(lineptr);
 			break;
 		}
-	/*	builtin = get_builtin() */
+
+		builtin = find_builtin(*lineptr); 
+		
 		if (lineptr[0] != '/')
 		lineptr = deal_with_path(lineptr);	
 		lineptr_dup = _strdup(lineptr);

@@ -1,4 +1,4 @@
-#include <stdlib.h>
+/*#include <stdlib.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -61,4 +61,4 @@ int maini(void)
 	find_builtin("env");
 
 return (0);
-}
+}*/

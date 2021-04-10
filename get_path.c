@@ -37,7 +37,7 @@ switch dir to check if cmd exist, chandedir() and stat()
 strcat() the address with lineptr_dup if it exist
 return the full lineptr_dup with address*/
 
-	char *path = NULL;
+	char *path = NULL, *free_p = NULL;
 	char **argv = NULL;
 	int i = 0, n = 0;
 	const char *delim = ":\n";
@@ -58,51 +58,43 @@ return the full lineptr_dup with address*/
 	cmd = strtok(cmd, "\n");
         argv = (char **)malloc(sizeof(char *) * (n + 3));
         argv[0] = strtok(path, delim);
+	printf("argv[0]:%p", argv[0]);
 	str_w_dir = _strcat_w_slash(argv[0], cmd);
+	printf("argv[0]:%p", argv[0]);
+	printf("str_w_dir:%p", str_w_dir);
 	if (stat(str_w_dir, &sb) == 0)
 	{	
 		
 		free(str_w_dir);
-		free(lineptr);
+		free(cmd);
         	free(path);
         	free (argv);
-                return (_strcat_w_slash(argv[0], lineptr_dup));
+		free_p = _strcat_w_slash(argv[0], lineptr_dup);
+                free(lineptr_dup);
+                return (free_p);
 	}
-/*	free(str_w_dir);
-		str_w_dir = NULL; */
 	for(i = 1; i < (n + 1); i++)
 	{
+		free(str_w_dir);
+			str_w_dir = NULL;
 		argv[i] = strtok(NULL, delim);
         	str_w_dir = _strcat_w_slash(argv[i], cmd);
 		if (stat(str_w_dir, &sb) == 0)
 		{
 			free(cmd);
                 	free(str_w_dir);
-/*			c = i;
-			while(c > 0)
-			{
-				if (argv[c - 1])
-					free(argv[c - 1]);
-				c--;	
-			} */
-                	return (_strcat_w_slash(argv[i], lineptr_dup));
+			free(path);
+			free(argv);
+			free_p = _strcat_w_slash(argv[i], lineptr_dup);
+			free(lineptr_dup);
+                	return (free_p);
 		}
-/*		else 
-		{
-			free(str_w_dir);
-			str_w_dir = NULL;
-		}*/
 	}
 
 	free(cmd);
         free(path);
         free(str_w_dir);
-
-        while(i > 0)
-       	{
-               free(argv[i - 1]);
-               i--;
-        }
+	free(argv);
 	return (lineptr_dup);
 }
 		

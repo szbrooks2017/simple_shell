@@ -35,7 +35,7 @@ char *split_cmd(char *lineptr);
 int check_cmd_avi(char *cmd);
 void make_fork(char *cmd);
 char *deal_with_path(char *lineptr);
-int (*find_builtin(char *lineptr))();
+int find_builtin(char *lineptr);
 int builtExit(void);
 int builtEnv(void);
 /*string prototypes*/

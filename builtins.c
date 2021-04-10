@@ -9,23 +9,26 @@ typedef struct builtinType
 	int (*function)(void);
 }builtinType
 */
-int (*find_builtin(char *lineptr))()
+int find_builtin(char *lineptr)
 {
-	int counter = 0;
-	lineptr = strtok(lineptr, "\n");
+	int counter, size;
 
 builtinType builtin[] = {
 	{"env", builtEnv},
-	{NULL, NULL}
+	{'\0', NULL},
 	};
 
+	size = (sizeof(builtin) / sizeof(builtinType));
+	counter = 0;
+	lineptr = strtok(lineptr, "\n");
 	if(lineptr != NULL)
 	{
-		while (counter < 2)
+		while (counter < size)
 		{
 			if(strcmp(builtin[counter].builtinName, lineptr) == 0)
-				return(builtin[counter].function);
+				builtin[counter].function();
 				counter++;
+				return (1);
 		}
 	}
 	return (0);

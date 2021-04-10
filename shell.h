@@ -1,0 +1,46 @@
+#ifndef SHELL_H
+#define SHELL_H
+
+/*libraries*/
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
+#include <sys/stat.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+#include <signal.h>
+#include <fcntl.h>
+#include <dirent.h>
+#include <stdarg.h>
+#include <errno.h>
+
+/*global var*/
+extern char **environ;
+
+/*builtin struct */
+typedef struct builtinType
+{
+        char *builtinName;
+        int (*function)();
+}builtinType;
+
+
+/* prototypes */
+int main(__attribute__((unused))int argc, __attribute__((unused))char **argv);
+void print_prompt(void);
+char **read_cmd(char **lineptr);
+int check_space(char *lineptr);
+char *split_cmd(char *lineptr);
+int check_cmd_avi(char *cmd);
+void make_fork(char *cmd);
+char *deal_with_path(char *lineptr);
+int find_builtin(char *lineptr);
+int builtExit(void);
+int builtEnv(void);
+/*string prototypes*/
+int _strcmp(char *lineptr, char *str);
+int _strlen(char *s);
+char *_strdup(char *str);
+
+#endif

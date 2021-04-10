@@ -1,0 +1,4 @@
+shell
+*.swp
+a.out
+vgcore*

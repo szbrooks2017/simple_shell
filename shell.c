@@ -89,11 +89,15 @@ int main(__attribute__((unused))int argc, __attribute__((unused))char **argv)
 			break;
 		}
 
+
 		if (find_builtin(lineptr) == 1)
 		{
 			free(lineptr);
 			continue;
 		 }
+
+		/*builtin = find_builtin(*lineptr); */
+
 		
 		if (lineptr[0] != '/')
 		lineptr = deal_with_path(lineptr);	

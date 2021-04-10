@@ -64,7 +64,7 @@ int check_cmd_avi(char *cmd)
 */	
 int main(__attribute__((unused))int argc, __attribute__((unused))char **argv)
 {
-	char *lineptr, *cmd, *lineptr_dup;
+	char *lineptr, *cmd, *lineptr_dup, *lineptr_builtin;
 
 	do {
 		lineptr = NULL;
@@ -89,18 +89,17 @@ int main(__attribute__((unused))int argc, __attribute__((unused))char **argv)
 			break;
 		}
 
+		lineptr_builtin = _strdup(lineptr);
 
-		if (find_builtin(lineptr) == 1)
+		if (find_builtin(lineptr_builtin) == 1)
 		{
+			free(lineptr_builtin);
 			free(lineptr);
 			continue;
-		 }
-
-		/*builtin = find_builtin(*lineptr); */
-
+		}
 		
 		if (lineptr[0] != '/')
-		lineptr = deal_with_path(lineptr);	
+			lineptr = deal_with_path(lineptr);	
 		lineptr_dup = _strdup(lineptr);
 		cmd = split_cmd(lineptr);
 		/* check the cmd availability */
@@ -108,6 +107,7 @@ int main(__attribute__((unused))int argc, __attribute__((unused))char **argv)
 			write(1, "./shell: No such file or directory\n", 35);
 		else
 		make_fork(lineptr_dup);
+		free(lineptr_builtin);
 		free(lineptr_dup);
                 free(lineptr);
 			lineptr = NULL;

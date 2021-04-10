@@ -17,7 +17,7 @@ char *_strcat_w_slash(char *a, char *b)
 	char *str = NULL;
 	int i = 0, j = 0, z = 0;
 
-	str = malloc(_strlen(a) + 1 + _strlen(b) + 1);
+	str = malloc(_strlen(a) + 1 + _strlen(b) + 2);
 	for (i = 0; i < _strlen(a); i++)
 	{
 		str[i] = a[i];
@@ -37,7 +37,7 @@ switch dir to check if cmd exist, chandedir() and stat()
 strcat() the address with lineptr_dup if it exist
 return the full lineptr_dup with address*/
 
-	char *path = NULL, *free_p = NULL;
+	char *path = NULL, *free_p = NULL, *argv_p = NULL;
 	char **argv = NULL;
 	int i = 0, n = 0;
 	const char *delim = ":\n";
@@ -58,19 +58,17 @@ return the full lineptr_dup with address*/
 	cmd = strtok(cmd, "\n");
         argv = (char **)malloc(sizeof(char *) * (n + 3));
         argv[0] = strtok(path, delim);
-	printf("argv[0]:%p", argv[0]);
 	str_w_dir = _strcat_w_slash(argv[0], cmd);
-	printf("argv[0]:%p", argv[0]);
-	printf("str_w_dir:%p", str_w_dir);
 	if (stat(str_w_dir, &sb) == 0)
 	{	
 		
 		free(str_w_dir);
 		free(cmd);
         	free(path);
-        	free (argv);
-		free_p = _strcat_w_slash(argv[0], lineptr_dup);
+		argv_p = argv[0];
+                free_p = _strcat_w_slash(argv_p, lineptr_dup);
                 free(lineptr_dup);
+		free(argv);
                 return (free_p);
 	}
 	for(i = 1; i < (n + 1); i++)
@@ -84,9 +82,10 @@ return the full lineptr_dup with address*/
 			free(cmd);
                 	free(str_w_dir);
 			free(path);
-			free(argv);
-			free_p = _strcat_w_slash(argv[i], lineptr_dup);
+			argv_p = argv[i];
+			free_p = _strcat_w_slash(argv_p, lineptr_dup);
 			free(lineptr_dup);
+			free(argv);
                 	return (free_p);
 		}
 	}

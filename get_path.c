@@ -6,7 +6,7 @@ char *_getenv(char *name)
 	size_t l = _strlen(name);
 	if (!environ || !*name)
 		return NULL;
-	for (i = 0; environ[i] && (strncmp(name, environ[i], l) || environ[i][l] != '='); i++);
+	for (i = 0; environ[i] && (_strncmp(name, environ[i], l) || environ[i][l] != '='); i++);
 	if (environ[i])
 		return (environ[i] + l + 1);
 	return NULL;

@@ -45,4 +45,5 @@ char *_strdup(char *str);
 size_t _strspn(char *s1, const char *s2);
 size_t _strcspn(char *s1, const char *s2);
 char *_strtok(char *s1, const char *s2);
+int _strncmp(char *s1, char *s2, size_t n);
 #endif

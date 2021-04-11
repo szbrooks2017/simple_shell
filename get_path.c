@@ -55,9 +55,9 @@ return the full lineptr_dup with address*/
         }
 	lineptr_dup = _strdup(lineptr);
         cmd = split_cmd(lineptr);
-	cmd = strtok(cmd, "\n");
+	cmd = _strtok(cmd, "\n");
         argv = (char **)malloc(sizeof(char *) * (n + 3));
-        argv[0] = strtok(path, delim);
+        argv[0] = _strtok(path, delim);
 	str_w_dir = _strcat_w_slash(argv[0], cmd);
 	if (stat(str_w_dir, &sb) == 0)
 	{	
@@ -75,7 +75,7 @@ return the full lineptr_dup with address*/
 	{
 		free(str_w_dir);
 			str_w_dir = NULL;
-		argv[i] = strtok(NULL, delim);
+		argv[i] = _strtok(NULL, delim);
         	str_w_dir = _strcat_w_slash(argv[i], cmd);
 		if (stat(str_w_dir, &sb) == 0)
 		{

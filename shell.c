@@ -38,7 +38,7 @@ char *split_cmd(char *lineptr)
 {
 	/* check if there is a space in the line */
 	if (check_space(lineptr) == 1)
-		return (strtok(lineptr, " \n"));
+		return (_strtok(lineptr, " \n"));
 	return (lineptr);
 }
 
@@ -52,7 +52,7 @@ int check_cmd_avi(char *cmd)
 {
 	struct stat sb;
 
-	cmd = strtok(cmd, "\n");
+	cmd = _strtok(cmd, "\n");
 	return (stat(cmd, &sb));
 }
 

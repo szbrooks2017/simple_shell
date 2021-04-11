@@ -24,9 +24,9 @@ void make_fork(char *lineptr)
 		i++;
 	}
 	argv = (char **)malloc(sizeof(char *) * (n + 3));
-	argv[0] = strtok(lineptr, delim);
+	argv[0] = _strtok(lineptr, delim);
 	for(i = 0; i < n; i++)
-		argv[i + 1] = strtok(NULL, delim);
+		argv[i + 1] = _strtok(NULL, delim);
 	argv[n + 1] = NULL;
 	child_pid = fork();
 	if (child_pid == -1)
@@ -45,12 +45,6 @@ void make_fork(char *lineptr)
 	{
 		wait(&status);
 	}
-/*	while(n)
-	{
-		free(argv[n]);
-		argv[n] = NULL;
-		n--;
-	}*/
 	free(argv);
 	return;
 }

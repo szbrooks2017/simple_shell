@@ -42,5 +42,7 @@ int builtEnv(void);
 int _strcmp(char *lineptr, char *str);
 int _strlen(char *s);
 char *_strdup(char *str);
-
+size_t _strspn(char *s1, const char *s2);
+size_t _strcspn(char *s1, const char *s2);
+char *_strtok(char *s1, const char *s2);
 #endif

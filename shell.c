@@ -113,7 +113,6 @@ int main(__attribute__((unused))int argc, __attribute__((unused))char **argv)
 			lineptr = NULL;
 		fflush(stdin);
 	} while (1);
-
 	return (0);
 }
 

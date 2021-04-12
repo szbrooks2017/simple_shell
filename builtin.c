@@ -14,7 +14,6 @@ int find_builtin(char *lineptr)
 
 builtinType builtin[] = {
 	{"env", builtEnv},
-	{"cd", builtCd},
 	{"help", builtHelp},
 	{'\0', NULL},
 	};
@@ -24,7 +23,6 @@ builtinType builtin[] = {
 	lineptr = strtok(lineptr, "\n");
 	if (lineptr != NULL)
 	{
-	printf("what lineptr in builtin is : %s\n", lineptr);
 		while (counter < (size - 1))
 		{
 			if (strcmp(builtin[counter].builtinName, lineptr) == 0)

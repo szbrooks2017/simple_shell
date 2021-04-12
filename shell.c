@@ -104,6 +104,14 @@ int main(__attribute__((unused))int argc, __attribute__((unused))char **argv)
 			break;
 		}
 
+		if (_strcmp(lineptr, "cd") == 1)
+		{
+
+			builtCd("/tmp");
+			free(lineptr);
+			continue;
+		}
+
 		lineptr_builtin = _strdup(lineptr);
 
 		if (find_builtin(lineptr_builtin) == 1)

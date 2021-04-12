@@ -6,10 +6,10 @@
 *
 */
 
-int builtExit(void)
+int builtExit(char *lineptr)
 {
-
-	exit(errno);
+	free(lineptr);
+/*xit(errno);*/
 	return (0);
 
 }

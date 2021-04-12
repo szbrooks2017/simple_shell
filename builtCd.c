@@ -19,8 +19,8 @@ int builtCd(void)
 	printf("in CD - before chdir pwd is %s\n", pwd);
 	chdir(pwd);
 	printf("in CD - after chdir pwd is %s\n", pwd);
-	printf("in CD - before chdir path_pwd %s\n", path_pwd);
-	chdir(path_pwd);
+/*	printf("in CD - before chdir path_pwd %s\n", path_pwd);
+	chdir(path_pwd);*/
 
 return (1);
 /*	if (chdir(path) < 0)

@@ -19,11 +19,16 @@
 extern char **environ;
 
 /*builtin struct */
+/**
+* struct builtinType - old variable used as a new variable
+* @builtinName: is the operator of the struct
+* @function: is the function called
+*/
 typedef struct builtinType
 {
-        char *builtinName;
-        int (*function)();
-}builtinType;
+	char *builtinName;
+	int (*function)();
+} builtinType;
 
 
 /* prototypes */
@@ -35,9 +40,15 @@ char *split_cmd(char *lineptr);
 int check_cmd_avi(char *cmd);
 void make_fork(char *cmd);
 char *deal_with_path(char *lineptr);
+char *_getenv(char *name);
+char *_strcat_w_slash(char *a, char *b);
+void signal_id(int sig);
+/*builtin functions */
 int find_builtin(char *lineptr);
-int builtExit(void);
+int builtExit(char *lineptr);
 int builtEnv(void);
+int builtCd(char *path);
+int builtHelp(void);
 /*string prototypes*/
 int _strcmp(char *lineptr, char *str);
 int _strlen(char *s);

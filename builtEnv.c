@@ -1,5 +1,9 @@
 #include "shell.h"
-extern char **environ;
+
+/**
+* builtEnv - calls the built in env variable
+* Return: returns 0 for success
+*/
 
 int builtEnv(void)
 {

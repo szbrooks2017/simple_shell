@@ -5,7 +5,7 @@
 
 void print_prompt(void)
 {
-	write(1, "#cisfun$ ", 9);
+	write(STDOUT_FILENO, "#cisfun$ ", 9);
 }
 /**
 * signal_id - sets a signal handler as sig
@@ -74,6 +74,7 @@ int check_cmd_avi(char *cmd)
 int main(__attribute__((unused))int argc, __attribute__((unused))char **argv)
 {
 	char *lineptr, *cmd, *lineptr_dup, *lineptr_builtin;
+	size_t n = 0; ssize_t command = 0;
 
 	do {
 		lineptr = NULL;
@@ -83,8 +84,11 @@ int main(__attribute__((unused))int argc, __attribute__((unused))char **argv)
 		{
 			print_prompt();
 		}
-		/* read line */
-		read_cmd(&lineptr);
+		command = getline(&lineptr, &n, stdin);
+                if (command == EOF)
+                {
+                        break;
+                }
 
 		if (!lineptr)
 		{

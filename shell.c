@@ -7,7 +7,16 @@ void print_prompt(void)
 {
 	write(1, "#cisfun$ ", 9);
 }
-
+/**
+* signal_id - sets a signal handler as sig
+* @sig: sig is set to sigint (signal interrupt)
+*
+*/
+void signal_id(int sig)
+{
+	if (sig == SIGINT)
+	write(STDOUT_FILENO, "\n#cisfun$ ", 11);
+}
 /**
 * check_space - checks if there is a space in the command input
 * @lineptr: refers to the command input
@@ -61,28 +70,34 @@ int check_cmd_avi(char *cmd)
 * @argc: is an unused command count
 * @argv: is the amount of arguments
 * Return: returns 0 for success.
-*/	
+*/
 int main(__attribute__((unused))int argc, __attribute__((unused))char **argv)
 {
 	char *lineptr, *cmd, *lineptr_dup, *lineptr_builtin;
 
 	do {
 		lineptr = NULL;
+		signal(SIGINT, signal_id);
 		/* print prompt */
-		print_prompt();
+		if (isatty(STDIN_FILENO))
+		{
+			print_prompt();
+		}
 		/* read line */
-			read_cmd(&lineptr);
-	/*	printf("%s\n", lineptr); */
+		read_cmd(&lineptr);
+
 		if (!lineptr)
 		{
 			exit(EXIT_SUCCESS);
 
 		}
+
 		if (*lineptr == '\0' || *lineptr == '\n')
 		{
 			free(lineptr);
 			continue;
 		}
+
 		if (_strcmp(lineptr, "exit\n") == 1)
 		{
 			free(lineptr);
@@ -97,9 +112,9 @@ int main(__attribute__((unused))int argc, __attribute__((unused))char **argv)
 			free(lineptr);
 			continue;
 		}
-		
+
 		if (lineptr[0] != '/')
-			lineptr = deal_with_path(lineptr);	
+			lineptr = deal_with_path(lineptr);
 		lineptr_dup = _strdup(lineptr);
 		cmd = split_cmd(lineptr);
 		/* check the cmd availability */
@@ -109,9 +124,10 @@ int main(__attribute__((unused))int argc, __attribute__((unused))char **argv)
 		make_fork(lineptr_dup);
 		free(lineptr_builtin);
 		free(lineptr_dup);
-                free(lineptr);
+		free(lineptr);
 			lineptr = NULL;
 		fflush(stdin);
+
 	} while (1);
 
 	return (0);

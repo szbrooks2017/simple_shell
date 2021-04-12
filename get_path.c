@@ -8,16 +8,20 @@
 
 char *_getenv(char *name)
 {
-	int i;
+	int i = 0;
 	size_t l = _strlen(name);
 
 	if (!environ || !*name)
 		return (NULL);
 	/* index i thru environ variable until it matches the name*/
 		/*inputted or the full path doesn't = =*/
-for (i = 0; environ[i] && (_strncmp(name, environ[i], l) || environ[i][l] != '='); i++);
+	while (environ[i] && (_strncmp(name, environ[i], l) || environ[i][l] != '='))
+	{
+		i++;
+	}
 	if (environ[i])
 		return (environ[i] + l + 1);
+
 	return (NULL);
 }
 

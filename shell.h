@@ -47,7 +47,7 @@ void signal_id(int sig);
 int find_builtin(char *lineptr);
 int builtExit(char *lineptr);
 int builtEnv(void);
-int builtCd(void);
+int builtCd(char *path);
 int builtHelp(void);
 /*string prototypes*/
 int _strcmp(char *lineptr, char *str);

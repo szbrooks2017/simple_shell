@@ -62,9 +62,17 @@ int _strlen(char *s)
 		c++;
 	return (c);
 }
+/**
+* _strncmp - compares the n bytes of s1 to s2
+* @s1: first string to compare
+* @s2: second string to compare
+* @n: size of s1 to compare to s2
+* Return: returns true
+*/
+
 int _strncmp(char *s1, char *s2, size_t n)
 {
-	for(; 0 < n; ++s1, ++s2, --n)
+	for (; n > 0; ++s1, ++s2, --n)
 	{
 		if (*s1 != *s2)
 			return ((*(unsigned char *)s1 < *(unsigned char *)s2) ? -1 : 1);

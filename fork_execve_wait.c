@@ -2,7 +2,7 @@
 
 /**
 * make_fork - forks a child process to do tasks
-* @cmd: refers to the command input
+* @lineptr: refers to the command input
 * Return: returns nothing
 */
 
@@ -14,18 +14,18 @@ void make_fork(char *lineptr)
 	int status = 0;
 	char **argv = NULL;
 	int i = 0, n = 0;
-	const char *delim = " \n"; 
+	const char *delim = " \n";
 
 	/* check how many spaces within the line */
 	while (lineptr[i] != '\0')
-	{	
+	{
 		if (lineptr[i] == ' ')
 			n++;
 		i++;
 	}
 	argv = (char **)malloc(sizeof(char *) * (n + 3));
 	argv[0] = _strtok(lineptr, delim);
-	for(i = 0; i < n; i++)
+	for (i = 0; i < n; i++)
 		argv[i + 1] = _strtok(NULL, delim);
 	argv[n + 1] = NULL;
 	child_pid = fork();
@@ -46,5 +46,4 @@ void make_fork(char *lineptr)
 		wait(&status);
 	}
 	free(argv);
-	return;
 }

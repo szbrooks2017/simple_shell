@@ -44,7 +44,11 @@ char *_getenv(char *name);
 char *_strcat_w_slash(char *a, char *b);
 void signal_id(int sig);
 int check_lineptr(char *lineptr);
-void free_main(char *p1, char *p2, char *p3);
+void free_3(char *p1, char *p2, char *p3);
+void free_2(char *p1, char *p2);
+void free_4(char *p1, char *p2, char *p3, char **p4);
+void free_5(char *p1, char *p2, char *p3, char *p4, char **p5);
+void check_slash(char *lineptr);
 /*builtin functions */
 int find_builtin(char *lineptr);
 int builtExit(char *lineptr);

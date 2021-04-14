@@ -69,31 +69,32 @@ int main(__attribute__((unused))int argc, __attribute__((unused))char **argv)
 			print_prompt();
 		command = getline(&lineptr, &n, stdin);
 		if (command == EOF)
+		{
+			write(STDOUT_FILENO, "\n", 1);
 			break;
-		if (check_lineptr(lineptr) == 2)
-			continue;
-		if (check_lineptr(lineptr) == 3)
-			continue;
+		}
 		u = check_lineptr(lineptr);
+		if (u == 2 || u == 3)
+			continue;
 		if (u == 4)
 			break;
 		lineptr_builtin = _strdup(lineptr);
 		if (find_builtin(lineptr_builtin) == 1)
 		{
-			free(lineptr_builtin);
-			free(lineptr);
+			free_2(lineptr_builtin, lineptr);
 			continue;
 		}
 		if (lineptr[0] != '/')
 			lineptr = deal_with_path(lineptr);
-		lineptr_dup = _strdup(lineptr);
-		cmd = split_cmd(lineptr);
+		lineptr_dup = _strdup(lineptr), cmd = split_cmd(lineptr);
 		if (check_cmd_avi(cmd) == -1)
 			write(1, "./shell: No such file or directory\n", 35);
 		else
 			make_fork(lineptr_dup);
-		free_main(lineptr_builtin, lineptr_dup, lineptr);
+		free_3(lineptr_dup, lineptr, lineptr_builtin);
+		fflush(stdin);
 	}
+	free(lineptr);
 	return (0);
 }
 

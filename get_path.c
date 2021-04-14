@@ -64,27 +64,19 @@ char *deal_with_path(char *lineptr)
 	struct stat sb;
 
 	path = _strdup(_getenv("PATH"));
-	while (path[i] != '\0')
-	{
+	for (i = 0; path[i] != '\0'; i++)
 		if (path[i] == ':')
 			n++;
-		i++;
-	}
 	lineptr_dup = _strdup(lineptr);
 	cmd = split_cmd(lineptr);
 	cmd = _strtok(cmd, "\n");
 	argv = (char **)malloc(sizeof(char *) * (n + 3));
-	argv[0] = _strtok(path, delim);
-	str_w_dir = _strcat_w_slash(argv[0], cmd);
+	argv[0] = _strtok(path, delim), str_w_dir = _strcat_w_slash(argv[0], cmd);
 	if (stat(str_w_dir, &sb) == 0)
 	{
-		free(str_w_dir);
-		free(cmd);
-		free(path);
 		argv_p = argv[0];
 		free_p = _strcat_w_slash(argv_p, lineptr_dup);
-		free(lineptr_dup);
-		free(argv);
+		free_5(str_w_dir, cmd, path, lineptr_dup, argv);
 		return (free_p);
 	}
 	for (i = 1; i < (n + 1); i++)
@@ -92,24 +84,16 @@ char *deal_with_path(char *lineptr)
 
 		free(str_w_dir);
 			str_w_dir = NULL;
-		argv[i] = _strtok(NULL, delim);
-		str_w_dir = _strcat_w_slash(argv[i], cmd);
+		argv[i] = _strtok(NULL, delim), str_w_dir = _strcat_w_slash(argv[i], cmd);
 		if (stat(str_w_dir, &sb) == 0)
 		{
-			free(cmd);
-			free(str_w_dir);
-			free(path);
 			argv_p = argv[i];
 			free_p = _strcat_w_slash(argv_p, lineptr_dup);
-			free(lineptr_dup);
-			free(argv);
+			free_5(str_w_dir, cmd, path, lineptr_dup, argv);
 			return (free_p);
 		}
 	}
-	free(cmd);
-	free(path);
-	free(str_w_dir);
-	free(argv);
+	free_4(str_w_dir, cmd, path, argv);
 	return (lineptr_dup);
 }
 

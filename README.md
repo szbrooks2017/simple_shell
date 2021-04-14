@@ -69,12 +69,12 @@
 #### For runing the programe:
 - 	Interactive mode
 
-	`cisfun# ls -l /tmp`
+	`cisfun# ls -l /tmp`         
 ####The terminal will return "no command is found" if so.
 - 	Non-interactive mode
-	`$ echo "ls -l /tmp" | ./shell`
+	`$ echo "ls -l /tmp" | ./shell`       
 ####The terminal will not print the prompt and exit after runing this line.
-- 	builtin functions
+- 	builtin functions       
 	`cisfun# env`         
 	`cisfun# exit`
 ## Sources:

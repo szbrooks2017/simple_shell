@@ -1,0 +1,42 @@
+."Process this file with
+." groff -man -Tascii man_simple_shell.1
+."
+.TH man_simple_shell.(1)
+
+.Sh NAME
+.B hsh
+- user interface to perform some task.
+
+.SH SYNOPSIS
+.B ./hsh
+
+.SH DESCRIPTION
+The hsh shell is a command-line interpreter. It provides a user interface for Unix-like systems. The shell can be used in both interactive and non-interactive mode.
+
+.B OVERVIEW
+The shell, when intialized runs the prompt, then waits for user input. The shell then determines if the user input is a builtin command, sourced from PATH or incompatible.
+
+.B INTERACTIVE MODE
+Commands that are run from the keyboard.
+
+.B NON-INTERACTIVE MODE
+Commands that are piped into ./hsh from anywhere outside of our shell.
+
+.B BUILTINS
+this section lists the builtin commmands that the user may input. "env", "exit", "help".
+
+.SH EXIT STATUS
+To exit the program, the user may type "exit" to exit the program.
+
+.SH ENVIRONMENT
+PWD contains the current directory.
+PATH contains the lsit of directories where executable files are located.
+
+.SH SEE ALSO
+.I echo(1), environ(7), systctl(8)
+
+.SH BUGS
+No known bugs.
+
+.SH AUTHOR
+Simon Sun and Stratton Brooks

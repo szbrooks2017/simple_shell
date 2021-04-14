@@ -70,7 +70,7 @@ int main(__attribute__((unused))int argc, __attribute__((unused))char **argv)
 		command = getline(&lineptr, &n, stdin);
 		if (command == EOF)
 		{
-			write(STDOUT_FILENO, "\n", 1);
+			/*write(STDOUT_FILENO, "\n", 1); */
 			break;
 		}
 		u = check_lineptr(lineptr);
@@ -88,7 +88,7 @@ int main(__attribute__((unused))int argc, __attribute__((unused))char **argv)
 			lineptr = deal_with_path(lineptr);
 		lineptr_dup = _strdup(lineptr), cmd = split_cmd(lineptr);
 		if (check_cmd_avi(cmd) == -1)
-			write(1, "./shell: No such file or directory\n", 35);
+			write(1, "./hsh: No such file or directory\n", 35);
 		else
 			make_fork(lineptr_dup);
 		free_3(lineptr_dup, lineptr, lineptr_builtin);

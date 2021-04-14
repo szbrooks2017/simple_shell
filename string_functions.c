@@ -13,8 +13,8 @@ int _strcmp(char *lineptr, char *str)
 
 	for (i = 0; lineptr[i] == str[i]; i++)
 	{
-		if (lineptr[i] == '\n' && str[i] == '\n')
-			return (1);
+		if (lineptr[i] == '\n' || str[i] == '\n')
+			return (i + 1);
 	}
 	return (0);
 

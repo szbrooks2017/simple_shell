@@ -59,57 +59,41 @@ int main(__attribute__((unused))int argc, __attribute__((unused))char **argv)
 	char *lineptr, *cmd, *lineptr_dup, *lineptr_builtin;
 	size_t n = 0;
 	ssize_t command = 0;
+	int u = 0;
 
-	do {
+	while (1)
+	{
 		lineptr = NULL;
 		signal(SIGINT, signal_id);
-		/* print prompt */
 		if (isatty(STDIN_FILENO))
-		{
 			print_prompt();
-		}
 		command = getline(&lineptr, &n, stdin);
 		if (command == EOF)
-		{
 			break;
-		}
 		if (check_lineptr(lineptr) == 2)
-		{
-		}
-		if (_strcmp(lineptr, "cd\n") == 1)
-		{
-			printf("%s", getcwd());
-			builtCd("/tmp");
-			printf("%s", getcwd());
-			free(lineptr);
 			continue;
-		}
-
+		if (check_lineptr(lineptr) == 3)
+			continue;
+		u = check_lineptr(lineptr);
+		if (u == 4)
+			break;
 		lineptr_builtin = _strdup(lineptr);
-
 		if (find_builtin(lineptr_builtin) == 1)
 		{
 			free(lineptr_builtin);
 			free(lineptr);
 			continue;
 		}
-
 		if (lineptr[0] != '/')
 			lineptr = deal_with_path(lineptr);
 		lineptr_dup = _strdup(lineptr);
 		cmd = split_cmd(lineptr);
-		/* check the cmd availability */
 		if (check_cmd_avi(cmd) == -1)
 			write(1, "./shell: No such file or directory\n", 35);
 		else
-		make_fork(lineptr_dup);
-		free(lineptr_builtin);
-		free(lineptr_dup);
-		free(lineptr);
-			lineptr = NULL;
-		fflush(stdin);
-
-	} while (1);
+			make_fork(lineptr_dup);
+		free_main(lineptr_builtin, lineptr_dup, lineptr);
+	}
 	return (0);
 }
 

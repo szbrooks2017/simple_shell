@@ -43,6 +43,8 @@ char *deal_with_path(char *lineptr);
 char *_getenv(char *name);
 char *_strcat_w_slash(char *a, char *b);
 void signal_id(int sig);
+int check_lineptr(char *lineptr);
+void free_main(char *p1, char *p2, char *p3);
 /*builtin functions */
 int find_builtin(char *lineptr);
 int builtExit(char *lineptr);

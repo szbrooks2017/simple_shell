@@ -62,31 +62,31 @@
 - int _strncmp(char *s1, char *s2, size_t n);
 ## Launch
 #### This project is created under ubuntu ver.14.04 and gcc as the compiler
-The gcc command is:
+#### The gcc command is:
 `$ gcc -Wall -Werror -Wextra -pedantic *.c -o shell`
 	`$ ./shell`
 ## Examples of use
-For runing the programe:
+#### For runing the programe:
 - 	Interactive mode
 
 	`cisfun# ls -l /tmp`
-	The terminal will return "no command is found" if so.
+	####The terminal will return "no command is found" if so.
 - 	Non-interactive mode
 	`$ echo "ls -l /tmp" | ./shell`
-	The terminal will not print the prompt and exit after runing this line.
+	####The terminal will not print the prompt and exit after runing this line.
 - 	builtin functions
 	`cisfun# env`
 	`cisfun# exit`
 ## Sources:
-https://brennan.io/2015/01/16/write-a-shell-in-c/
-https://github.com/kamalmarhubi/shell-workshop
-https://danishpraka.sh/2018/01/15/write-a-shell.html
-https://cs.wellesley.edu/~cs240/f15/assignments/shell/shell.html
-https://www.cs.purdue.edu/homes/grr/SystemsProgrammingBook/Book/Chapter5-WritingYourOwnShell.pdf
-http://cs.brown.edu/courses/cs033/shell1/
-https://github.com/tokenrove/build-your-own-shell
-https://nickolasteixeira.medium.com/want-to-build-a-simple-shell-heres-how-you-do-it-75890647bae8
-https://www.cs.cornell.edu/courses/cs414/2004su/homework/shell/shell.html
+- https://brennan.io/2015/01/16/write-a-shell-in-c/
+- https://github.com/kamalmarhubi/shell-workshop
+- https://danishpraka.sh/2018/01/15/write-a-shell.html
+- https://cs.wellesley.edu/~cs240/f15/assignments/shell/shell.html
+- https://www.cs.purdue.edu/homes/grr/SystemsProgrammingBook/Book/Chapter5-WritingYourOwnShell.pdf
+- http://cs.brown.edu/courses/cs033/shell1/
+- https://github.com/tokenrove/build-your-own-shell
+- https://nickolasteixeira.medium.com/want-to-build-a-simple-shell-heres-how-you-do-it-75890647bae8
+- https://www.cs.cornell.edu/courses/cs414/2004su/homework/shell/shell.html
 
 ## Authors
 - Stratton Brooks Github ID: szbrooks2017

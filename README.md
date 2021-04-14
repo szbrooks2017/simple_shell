@@ -72,10 +72,12 @@
 	`cisfun# ls -l /tmp`         
 #### The terminal will return "no command is found" if so.
 - 	Non-interactive mode      
+                                       
 	`$ echo "ls -l /tmp" | ./shell`       
 #### The terminal will not print the prompt and exit after runing this line.
 - 	builtin functions       
 	`cisfun# env`         
+                            
 	`cisfun# exit`
 ## Sources:
 - https://brennan.io/2015/01/16/write-a-shell-in-c/

@@ -63,19 +63,19 @@
 ## Launch
 #### This project is created under ubuntu ver.14.04 and gcc as the compiler
 #### The gcc command is:
-`$ gcc -Wall -Werror -Wextra -pedantic *.c -o shell`
+`$ gcc -Wall -Werror -Wextra -pedantic *.c -o shell`         
 	`$ ./shell`
 ## Examples of use
 #### For runing the programe:
 - 	Interactive mode
 
 	`cisfun# ls -l /tmp`
-	####The terminal will return "no command is found" if so.
+####The terminal will return "no command is found" if so.
 - 	Non-interactive mode
 	`$ echo "ls -l /tmp" | ./shell`
-	####The terminal will not print the prompt and exit after runing this line.
+####The terminal will not print the prompt and exit after runing this line.
 - 	builtin functions
-	`cisfun# env`
+	`cisfun# env`         
 	`cisfun# exit`
 ## Sources:
 - https://brennan.io/2015/01/16/write-a-shell-in-c/
@@ -90,7 +90,7 @@
 
 ## Authors
 - Stratton Brooks Github ID: szbrooks2017
-- Simon Sun Github ID：ssun97
+- Simon Sun Github ID: ssun97
 ## Especially thanks our turiors who provided us great help on the project
 - Carlos Esquievl
 - Aleia Mcnaney Devore

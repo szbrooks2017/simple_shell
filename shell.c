@@ -1,22 +1,5 @@
 #include "shell.h"
-/**
-* print_prompt - prints what is displayed before the $
-*/
 
-void print_prompt(void)
-{
-	write(STDOUT_FILENO, "#cisfun$ ", 9);
-}
-/**
-* signal_id - sets a signal handler as sig
-* @sig: sig is set to sigint (signal interrupt)
-*
-*/
-void signal_id(int sig)
-{
-	if (sig == SIGINT)
-	write(STDOUT_FILENO, "\n#cisfun$ ", 11);
-}
 /**
 * check_space - checks if there is a space in the command input
 * @lineptr: refers to the command input
@@ -74,7 +57,8 @@ int check_cmd_avi(char *cmd)
 int main(__attribute__((unused))int argc, __attribute__((unused))char **argv)
 {
 	char *lineptr, *cmd, *lineptr_dup, *lineptr_builtin;
-	size_t n = 0; ssize_t command = 0;
+	size_t n = 0;
+	ssize_t command = 0;
 
 	do {
 		lineptr = NULL;
@@ -85,29 +69,13 @@ int main(__attribute__((unused))int argc, __attribute__((unused))char **argv)
 			print_prompt();
 		}
 		command = getline(&lineptr, &n, stdin);
-                if (command == EOF)
-                {
-                        break;
-                }
-
-		if (!lineptr)
+		if (command == EOF)
 		{
-			exit(EXIT_SUCCESS);
-
-		}
-
-		if (*lineptr == '\0' || *lineptr == '\n')
-		{
-			free(lineptr);
-			continue;
-		}
-
-		if (_strcmp(lineptr, "exit\n") == 1)
-		{
-			free(lineptr);
 			break;
 		}
-
+		if (check_lineptr(lineptr) == 2)
+		{
+		}
 		if (_strcmp(lineptr, "cd\n") == 1)
 		{
 			printf("%s", getcwd());

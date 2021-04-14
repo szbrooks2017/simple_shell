@@ -13,7 +13,7 @@ char *_getenv(char *name)
 
 	if (!environ || !*name)
 		return (NULL);
-	/* index i thru environ variable until it matches the name*/
+	/* index i thru environ array until it matches the name*/
 		/*inputted or the full path doesn't = =*/
 	while (environ[i] && (_strncmp(name, environ[i], l) || environ[i][l] != '='))
 	{
@@ -56,17 +56,14 @@ char *_strcat_w_slash(char *a, char *b)
 
 char *deal_with_path(char *lineptr)
 	{
-
 	char *path = NULL, *free_p = NULL, *argv_p = NULL;
 	char **argv = NULL;
 	int i = 0, n = 0;
 	const char *delim = ":\n";
 	char *lineptr_dup = NULL, *cmd = NULL, *str_w_dir = NULL;
 	struct stat sb;
-	/*get the path */
+
 	path = _strdup(_getenv("PATH"));
-	/* split the path into strings and save them into char **arg*/
-	/* check how many colons within the line */
 	while (path[i] != '\0')
 	{
 		if (path[i] == ':')
@@ -92,6 +89,7 @@ char *deal_with_path(char *lineptr)
 	}
 	for (i = 1; i < (n + 1); i++)
 	{
+
 		free(str_w_dir);
 			str_w_dir = NULL;
 		argv[i] = _strtok(NULL, delim);

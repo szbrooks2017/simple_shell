@@ -40,7 +40,7 @@
 - write (man 2 write)
 ## The fuctions/prototypes we created for this project
 - void print_prompt(void);
-- char ***read_cmd(char **lineptr);
+- char **read_cmd(char **lineptr);
 - int check_space(char *lineptr);
 - char *split_cmd(char *lineptr);
 - int check_cmd_avi(char *cmd);

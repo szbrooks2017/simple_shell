@@ -108,10 +108,11 @@ int main(__attribute__((unused))int argc, __attribute__((unused))char **argv)
 			break;
 		}
 
-		if (_strcmp(lineptr, "cd") == 1)
+		if (_strcmp(lineptr, "cd\n") == 1)
 		{
-
+			printf("%s", getcwd());
 			builtCd("/tmp");
+			printf("%s", getcwd());
 			free(lineptr);
 			continue;
 		}

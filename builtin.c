@@ -25,7 +25,7 @@ builtinType builtin[] = {
 	{
 		while (counter < (size - 1))
 		{
-			if (strcmp(builtin[counter].builtinName, lineptr) == 0)
+			if (_strcmp(builtin[counter].builtinName, lineptr) == 0)
 			{
 				builtin[counter].function();
 				return (1);

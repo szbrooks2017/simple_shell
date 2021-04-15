@@ -5,7 +5,7 @@
 
 void print_prompt(void)
 {
-	write(STDOUT_FILENO, "#cisfun$ ", 9);
+	write(STDOUT_FILENO, "$ ", 2);
 }
 /**
 * signal_id - sets a signal handler as sig
@@ -15,5 +15,5 @@ void print_prompt(void)
 void signal_id(int sig)
 {
 	if (sig == SIGINT)
-	write(STDOUT_FILENO, "\n#cisfun$ ", 11);
+	write(STDOUT_FILENO, "\n$ ", 3);
 }

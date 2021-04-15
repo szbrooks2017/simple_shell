@@ -74,7 +74,10 @@ int main(__attribute__((unused))int argc, __attribute__((unused))char **argv)
 		}
 		u = check_lineptr(lineptr1);
 		if (u == 2 || u == 3)
+		{
+			lineptr1 = NULL;
 			continue;
+		}
 		lineptr = cut_space(lineptr1);
 		u = check_lineptr(lineptr);
 		if (u == 4)

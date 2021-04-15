@@ -7,17 +7,17 @@
 * Return: returns 0 for success
 */
 
-int _strcmp(char *lineptr, char *str)
+int _strcmp(char *s1, char *s2)
 {
-	int i = 0;
+	char i = 0;
 
-	for (i = 0; lineptr[i] == str[i]; i++)
+	while (*(s1 + i) == *(s2 + i))
 	{
-		if (lineptr[i] == '\n' || str[i] == '\n')
-			return (i + 1);
+		if (*(s1 + i) == '\0' && *(s2 + i) == '\0')
+			break;
+		i++;
 	}
-	return (0);
-
+	return (*(s1 + i) - *(s2 + i));
 }
 /**
 * _strdup - duplicates the string and considers malloc

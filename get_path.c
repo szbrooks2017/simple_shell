@@ -76,7 +76,7 @@ char *deal_with_path(char *lineptr)
 	{
 		argv_p = argv[0];
 		free_p = _strcat_w_slash(argv_p, lineptr_dup);
-		free_5(str_w_dir, cmd, path, lineptr_dup, argv);
+		free_4(str_w_dir, path, lineptr_dup, argv);
 		return (free_p);
 	}
 	for (i = 1; i < (n + 1); i++)
@@ -89,11 +89,11 @@ char *deal_with_path(char *lineptr)
 		{
 			argv_p = argv[i];
 			free_p = _strcat_w_slash(argv_p, lineptr_dup);
-			free_5(str_w_dir, cmd, path, lineptr_dup, argv);
+			free_4(str_w_dir, path, lineptr_dup, argv);
 			return (free_p);
 		}
 	}
-	free_4(str_w_dir, cmd, path, argv);
+	free_3_double(str_w_dir, path, argv);
 	return (lineptr_dup);
 }
 

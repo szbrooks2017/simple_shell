@@ -11,6 +11,19 @@ void free_3(char *p1, char *p2, char *p3)
 	free(p2);
 	free(p3);
 }
+
+/**
+ * free_3_double - free the memoru
+ * @p1: char *
+ * @p2: char *
+ * @p3: char **
+ */
+void free_3_double(char *p1,char *p2, char **p3)
+{
+	free(p1);
+	free(p2);
+	free(p3);
+}
 /**
  * free_2 - free the memoru
  * @p1: char *

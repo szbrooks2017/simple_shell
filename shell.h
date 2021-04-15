@@ -45,7 +45,7 @@ char *_strcat_w_slash(char *a, char *b);
 void signal_id(int sig);
 int check_lineptr(char *lineptr);
 void free_3(char *p1, char *p2, char *p3);
-void free_3_double(char *p1,char *p2, char **p3);
+void free_3_double(char *p1, char *p2, char **p3);
 void free_2(char *p1, char *p2);
 void free_4(char *p1, char *p2, char *p3, char **p4);
 void free_5(char *p1, char *p2, char *p3, char *p4, char **p5);
@@ -64,5 +64,5 @@ char *_strdup(char *str);
 size_t _strspn(char *s1, const char *s2);
 size_t _strcspn(char *s1, const char *s2);
 char *_strtok(char *s1, const char *s2);
-int _strncmp(char *s1, char *s2, size_t n);
+int _strncmp(char *s1, char *s2, size_t len);
 #endif

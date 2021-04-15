@@ -14,7 +14,7 @@ int check_lineptr(char *lineptr)
 		free(lineptr);
 		return (3);
 	}
-	if (strncmp(lineptr, "exit", 4) == 0)
+	if (_strncmp(lineptr, "exit", 4) == 0)
 	{
 		/*free(lineptr);*/
 		return (4);

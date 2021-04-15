@@ -70,17 +70,27 @@ int _strlen(char *s)
 * Return: returns true
 */
 
-int _strncmp(char *s1, char *s2, size_t n)
+int _strncmp(char *s1, char *s2, size_t len)
 {
-	for (; n > 0; ++s1, ++s2, --n)
+	unsigned int position = 0;
+	int diff = 0;
+	
+	while (position < len)
 	{
-		if (*s1 != *s2)
-			return ((*(unsigned char *)s1 < *(unsigned char *)s2) ? -1 : 1);
-		else if (*s1 == '\0')
-			return (0);
+		if (s1[position] == s2[position])
+		{
+			position++;
+			continue;
+		}
+		else
+		{
+			diff = s1[position] - s2[position];	
+			break;
+		}
+		position++;
+		
 	}
-
-	return (0);
+	return (diff);
 }
 
 

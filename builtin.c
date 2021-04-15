@@ -20,7 +20,7 @@ builtinType builtin[] = {
 
 	size = (sizeof(builtin) / sizeof(builtinType));
 	counter = 0;
-	lineptr = strtok(lineptr, "\n");
+	lineptr = _strtok(lineptr, "\n");
 	if (lineptr != NULL)
 	{
 		while (counter < (size - 1))

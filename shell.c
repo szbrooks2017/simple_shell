@@ -94,7 +94,7 @@ int main(__attribute__((unused))int argc, __attribute__((unused))char **argv)
 		else
 			make_fork(lineptr_dup);
 		free_3(lineptr_dup, lineptr1, lineptr_builtin);
-		free(lineptr);
+		/*free(lineptr);*/
 		fflush(stdin);
 	}
 	free(lineptr1);

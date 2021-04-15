@@ -59,11 +59,10 @@ int main(__attribute__((unused))int argc, __attribute__((unused))char **argv)
 	char *lineptr1 = NULL, *cmd = NULL, *lineptr_dup = NULL, *lineptr_builtin = NULL, *lineptr = NULL;
 	size_t n = 0;
 	ssize_t command = 0;
-	int u = 0;
+	int u = 0, z = 0;
 
 	while (1)
 	{
-		lineptr1 = NULL;
 		signal(SIGINT, signal_id);
 		if (isatty(STDIN_FILENO))
 			print_prompt();
@@ -83,22 +82,29 @@ int main(__attribute__((unused))int argc, __attribute__((unused))char **argv)
 		lineptr_builtin = _strdup(lineptr);
 		if (find_builtin(lineptr_builtin) == 1)
 		{
-			free_2(lineptr_builtin, lineptr1);
+			free(lineptr_builtin);
 			continue;
 		}
 		if (lineptr[0] != '/')
+		{
 			lineptr = deal_with_path(lineptr);
-		lineptr_dup = _strdup(lineptr), cmd = split_cmd(lineptr);
+			z = 1;
+		}
+		lineptr_dup = _strdup(lineptr);
+		cmd = split_cmd(lineptr);
 		if (check_cmd_avi(cmd) == -1)
 			write(1, "./hsh: No such file or directory\n", 35);
 		else
 			make_fork(lineptr_dup);
-		free_3(lineptr_dup, lineptr1, lineptr_builtin);
-		if (lineptr[0] == '/')
+		free_2(lineptr_dup, lineptr_builtin);
+		if (z == 1)
+		{
 			free(lineptr);
+		}		lineptr = NULL;
 		fflush(stdin);
 	}
 	free(lineptr1);
+		lineptr = NULL;
 	return (0);
 }
 

@@ -8,11 +8,20 @@
 void free_3(char *p1, char *p2, char *p3)
 {
 	if (p1)
+	{
 		free(p1);
+		p1 = NULL;
+	}
 	if (p2)
+	{
 		free(p2);
+		p2 = NULL;
+	}
 	if (p3)
+	{
 		free(p3);
+		p3 = NULL;
+	}
 }
 
 /**
@@ -23,9 +32,21 @@ void free_3(char *p1, char *p2, char *p3)
  */
 void free_3_double(char *p1,char *p2, char **p3)
 {
-	free(p1);
-	free(p2);
-	free(p3);
+	if (p1)
+        {
+                free(p1);
+                p1 = NULL;
+        }
+        if (p2)
+        {
+                free(p2);
+                p2 = NULL;
+        }
+        if (p3)
+        {
+                free(p3);
+                p3 = NULL;
+        }
 }
 /**
  * free_2 - free the memoru
@@ -34,8 +55,16 @@ void free_3_double(char *p1,char *p2, char **p3)
  */
 void free_2(char *p1, char *p2)
 {
-	free(p1);
-	free(p2);
+	if (p1)
+        {
+                free(p1);
+                p1 = NULL;
+        }
+        if (p2)
+        {
+                free(p2);
+                p2 = NULL;
+        }
 }
 /**
  * free_4 - free the memoru
@@ -46,10 +75,26 @@ void free_2(char *p1, char *p2)
  */
 void free_4(char *p1, char *p2, char *p3, char **p4)
 {
-	free(p1);
-	free(p2);
-	free(p3);
-	free(p4);
+	if (p1)
+        {
+                free(p1);
+                p1 = NULL;
+        }
+        if (p2)
+        {
+                free(p2);
+                p2 = NULL;
+        }
+        if (p3)
+        {
+                free(p3);
+                p3 = NULL;
+        }
+	if (p4)
+        {
+                free(p4);
+                p3 = NULL;
+        }
 }
 /**
  * free_5 - free the memoru

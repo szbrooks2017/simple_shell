@@ -56,7 +56,7 @@ int check_cmd_avi(char *cmd)
 */
 int main(__attribute__((unused))int argc, __attribute__((unused))char **argv)
 {
-	char *lineptr1, *cmd, *lineptr_dup, *lineptr_builtin, *lineptr;
+	char *lineptr1 = NULL, *cmd = NULL, *lineptr_dup = NULL, *lineptr_builtin = NULL, *lineptr = NULL;
 	size_t n = 0;
 	ssize_t command = 0;
 	int u = 0;
@@ -94,7 +94,8 @@ int main(__attribute__((unused))int argc, __attribute__((unused))char **argv)
 		else
 			make_fork(lineptr_dup);
 		free_3(lineptr_dup, lineptr1, lineptr_builtin);
-		free(lineptr);
+		if (lineptr[0] == '/')
+			free(lineptr);
 		fflush(stdin);
 	}
 	free(lineptr1);

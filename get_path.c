@@ -81,7 +81,6 @@ char *deal_with_path(char *lineptr)
 	}
 	for (i = 1; i < (n + 1); i++)
 	{
-
 		free(str_w_dir);
 			str_w_dir = NULL;
 		argv[i] = _strtok(NULL, delim), str_w_dir = _strcat_w_slash(argv[i], cmd);
